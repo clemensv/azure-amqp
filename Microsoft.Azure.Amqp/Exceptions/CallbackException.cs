@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Amqp
     using System;
     using System.Runtime.Serialization;
 
-#if !NETSTANDARD
+#if !NETSTANDARD && !PCL
     [Serializable]
 #endif
     class CallbackException : FatalException
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Amqp
             Fx.Assert(!Fx.IsFatal(innerException), "CallbackException can't be used to wrap fatal exceptions.");
         }
 
-#if !NETSTANDARD
+#if !NETSTANDARD && !PCL
         protected CallbackException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {

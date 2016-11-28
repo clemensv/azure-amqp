@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Amqp.Util
         {
             Fx.Assert(callback != null, "Cannot schedule a null callback");
 #if WINDOWS_UWP
-            Windows.System.Threading.ThreadPool.RunAsync((workitem) =>
+            var t = Windows.System.Threading.ThreadPool.RunAsync((workitem) =>
             {
                 callback(state);
             });

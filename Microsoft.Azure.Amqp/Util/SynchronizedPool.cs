@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Amqp.Util
 {
     using System;
     using System.Collections.Generic;
-#if !NETSTANDARD
+#if !NETSTANDARD && !PCL
     using System.Security.Permissions;
 #endif
 
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Amqp.Util
             public static readonly int ProcessorCount = GetProcessorCount();
 
             [Fx.Tag.SecurityNote(Critical = "Asserts in order to get the processor count from the environment", Safe = "This data isn't actually protected so it's ok to leak")]
-#if !NETSTANDARD
+#if !NETSTANDARD && !PCL
             [EnvironmentPermission(SecurityAction.Assert, Read = "NUMBER_OF_PROCESSORS")]
 #endif
             static int GetProcessorCount()

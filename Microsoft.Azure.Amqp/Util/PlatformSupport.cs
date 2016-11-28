@@ -9,7 +9,7 @@ using Windows.Networking;
 using Windows.Networking.Sockets;
 #endif
 
-#if NETSTANDARD
+#if NETSTANDARD || PCL
 
 // This interface doesn't exist in DNXCORE50, define it manually
 namespace System
@@ -173,7 +173,7 @@ namespace System.Collections.Generic
     }
 }
 
-#if WINDOWS_UWP
+#if WINDOWS_UWP || PCL
 
 namespace System.Threading
 {
@@ -210,6 +210,8 @@ namespace Diagnostics
             {
 #if WINDOWS_UWP
                 return Win32.GetCurrentProcessId();
+#elif PCL
+                throw new System.NotImplementedException();
 #else
                 return System.Diagnostics.Process.GetCurrentProcess().Id;
 #endif
@@ -218,3 +220,29 @@ namespace Diagnostics
     }
 }
 
+namespace Platform.System.Text
+{  
+#if PCL  
+    class Encoding
+    {  
+        public static global::System.Text.Encoding ASCII
+        {  
+            get  
+            {  
+                throw new global::System.NotImplementedException(Microsoft.Azure.Amqp.PCL.Resources.ReferenceAssemblyInvalidUse);  
+            }  
+        }  
+    }  
+#else  
+    class Encoding  
+    {  
+        public static global::System.Text.Encoding ASCII  
+        {  
+            get  
+            {  
+                return global::System.Text.Encoding.ASCII;  
+            }  
+        }  
+    }  
+#endif  
+}  

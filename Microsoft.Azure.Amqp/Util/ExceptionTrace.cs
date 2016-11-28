@@ -1,18 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Tracing;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Text;
-using Microsoft.Azure.Amqp.Tracing;
 
 namespace Microsoft.Azure.Amqp.Util
 {
-#if !NETSTANDARD
+    using System;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Diagnostics.Tracing;
+    using System.Globalization;
+    using System.Runtime.CompilerServices;
+    using System.Text;
+    using System.Threading;
+    using Microsoft.Azure.Amqp.Tracing;
+#if !NETSTANDARD && !MONOANDROID && !PCL
     using Microsoft.Azure.Amqp.Interop;
     using System.Runtime.Versioning;
 #endif
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Amqp.Util
             ////MessagingClientEtwProvider.Provider.EventWriteUnhandledException(this.eventSourceName + ": " + exception.ToStringSlim());
         }
 
-#if !NETSTANDARD
+#if !NETSTANDARD && !PCL
         [ResourceConsumption(ResourceScope.Process)]
 #endif
         [Fx.Tag.SecurityNote(Critical = "Calls 'System.Runtime.Interop.UnsafeNativeMethods.IsDebuggerPresent()' which is a P/Invoke method",
@@ -128,7 +129,7 @@ namespace Microsoft.Azure.Amqp.Util
                 {
                     case EventLevel.Critical:
                     case EventLevel.Error:
-#if NETSTANDARD
+#if NETSTANDARD || PCL
                         Debug.WriteLine("[{0}] An Exception is being thrown: {1}", level, exception);
 #else
                         Trace.TraceError("An Exception is being thrown: {0}", GetDetailsForThrownException(exception));
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Amqp.Util
 
                         break;
                     case EventLevel.Warning:
-#if NETSTANDARD
+#if NETSTANDARD || PCL
                         Debug.WriteLine("[{0}] An Exception is being thrown: {1}", level, exception);
 #else
                         Trace.TraceWarning("An Exception is being thrown: {0}", GetDetailsForThrownException(exception));
@@ -178,6 +179,7 @@ namespace Microsoft.Azure.Amqp.Util
 
         public static string GetDetailsForThrownException(Exception e)
         {
+#if !PCL
             StringBuilder details = new StringBuilder(2048);
             details.AppendLine(e.ToStringSlim());
             if (string.IsNullOrWhiteSpace(e.StackTrace))
@@ -194,6 +196,9 @@ namespace Microsoft.Azure.Amqp.Util
             }
 
             return details.ToString();
+#else
+            throw new NotImplementedException(Microsoft.Azure.Amqp.PCL.Resources.ReferenceAssemblyInvalidUse);
+#endif
         }
 
         [SuppressMessage(FxCop.Category.Performance, FxCop.Rule.MarkMembersAsStatic, Justification = "CSDMain #183668")]
@@ -201,7 +206,7 @@ namespace Microsoft.Azure.Amqp.Util
             Safe = "Safe because it's a no-op in retail builds.")]
         internal void BreakOnException(Exception exception)
         {
-#if DEBUG && !NETSTANDARD
+#if DEBUG && !NETSTANDARD && !MONOANDROID && !PCL
             if (Fx.BreakOnExceptionTypes != null)
             {
                 foreach (Type breakType in Fx.BreakOnExceptionTypes)
