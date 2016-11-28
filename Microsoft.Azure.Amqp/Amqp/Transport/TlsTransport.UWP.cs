@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Amqp.Transport
     using System.Runtime.InteropServices.WindowsRuntime;
     using Windows.Networking.Sockets;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Amqp.Util;
 
     sealed class TlsTransport : TransportBase, IDisposable
     {

@@ -3,7 +3,7 @@
 
 #if !NETSTANDARD
 
-namespace Microsoft.Azure.Amqp
+namespace Microsoft.Azure.Amqp.Util
 {
     using System;
     using System.Security;

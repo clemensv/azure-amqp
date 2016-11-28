@@ -1,13 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
-{
-    using System;
-    using System.Security;
-    using System.Threading;
+using System;
+using System.Security;
+using System.Threading;
 
-    abstract class ActionItem
+namespace Microsoft.Azure.Amqp.Util
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public abstract class ActionItem
     {
 #if !NETSTANDARD
         [Fx.Tag.SecurityNote(Critical = "Stores the security context, used later in binding back into")]

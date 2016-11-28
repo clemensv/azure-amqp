@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+namespace Microsoft.Azure.Amqp.Util
 {
     using System;
     using System.Diagnostics;
@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Amqp
     [DebuggerStepThrough]
     [SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable",
         Justification = "Uses custom scheme for cleanup")]
-    abstract class AsyncResult : IAsyncResult
+     abstract class AsyncResult : IAsyncResult
     {
         public const string DisablePrepareForRethrow = "DisablePrepareForRethrow";
 

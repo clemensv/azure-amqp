@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+namespace Microsoft.Azure.Amqp.Util
 {
     using System;
     using System.Diagnostics;
     using System.Threading;
 
     [DebuggerStepThrough]
-    struct TimeoutHelper
+    public struct TimeoutHelper
     {
         DateTime deadline;
         bool deadlineSet;

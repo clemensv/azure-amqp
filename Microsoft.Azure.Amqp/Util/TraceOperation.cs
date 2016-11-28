@@ -1,10 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+namespace Microsoft.Azure.Amqp.Util
 {
-    enum TraceOperation
+    /// <summary>
+    /// Internal use
+    /// </summary>
+    public enum TraceOperation
     {
+        /// <summary>
+        /// 
+        /// </summary>
         Initialize = 0,
         Create = 1,
         Delete = 2,

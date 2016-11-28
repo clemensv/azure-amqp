@@ -7,6 +7,7 @@
     using global::Microsoft.Azure.Amqp;
     using global::Microsoft.Azure.Amqp.Amqp;
     using global::Microsoft.Azure.Amqp.Encoding;
+    using global::Microsoft.Azure.Amqp.Util;
     using Xunit;
 
     [Trait("Category", TestCategory.Current)]

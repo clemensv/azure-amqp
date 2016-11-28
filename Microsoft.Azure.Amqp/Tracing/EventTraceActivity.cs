@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Amqp.Tracing
     /// <summary>
     /// This class holds the ActivityId that would be set on the thread for ETW during the trace. 
     /// </summary>
-    internal class EventTraceActivity
+    public class EventTraceActivity
     {
         static EventTraceActivity empty;
 

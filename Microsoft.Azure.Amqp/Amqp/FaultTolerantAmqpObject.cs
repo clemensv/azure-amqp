@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Amqp
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Util;
 
     /// <summary>
     /// This API supports the Azure infrastructure and is not intended to be used directly from your code.

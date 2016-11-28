@@ -117,8 +117,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Microsoft.Azure.Amqp\ActionItem.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\AmqpTrace.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\AmqpCbsLink.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\AmqpCodec.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\AmqpConnection.cs" />
@@ -256,39 +254,22 @@
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\Sasl\SaslOutcome.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\Sasl\SaslPlainHandler.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\Sasl\SaslResponse.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\AsyncResult.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\CommonResources.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\CompletedAsyncResult.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\ExceptionDispatcher.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Exceptions\AssertionFailedException.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Exceptions\CallbackException.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Exceptions\FatalException.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\ExceptionTrace.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Extensions\ExceptionExtensions.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\Fx.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\FxCop.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\InternalBufferManager.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Interop\UnsafeNativeMethods.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\IteratorAsyncResult.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\PartialTrustHelpers.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\ResourcesGeneric.Designer.cs">
       <DependentUpon>ResourcesGeneric.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="..\Microsoft.Azure.Amqp\Singleton.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\SynchronizedPool.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\TaskHelpers.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\Ticks.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\TimeoutHelper.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\Timestamp.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\TraceOperation.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Tracing\EventTraceActivity.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Tracing\TrackingContext.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\WaitCallbackActionItem.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\Sasl\SaslTransport.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\Sasl\SaslTransportProvider.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\Amqp\SegmentBufferPool.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\SendingAmqpLink.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\SequenceNumber.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\SerializedWorker.cs" />
@@ -318,8 +299,67 @@
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\Transport\TransportSettings.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Amqp\WorkCollection.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Properties\AssemblyInfo.cs" />
-    <Compile Include="..\Microsoft.Azure.Amqp\PlatformSupport.cs" />
     <Compile Include="..\Microsoft.Azure.Amqp\Resources.UWP.cs" />
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\ActionItem.cs">
+      <Link>ActionItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\AmqpTrace.cs">
+      <Link>AmqpTrace.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\AsyncResult.cs">
+      <Link>AsyncResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\CompletedAsyncResult.cs">
+      <Link>CompletedAsyncResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\ExceptionDispatcher.cs">
+      <Link>ExceptionDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\ExceptionTrace.cs">
+      <Link>ExceptionTrace.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\Fx.cs">
+      <Link>Fx.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\InternalBufferManager.cs">
+      <Link>InternalBufferManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\IteratorAsyncResult.cs">
+      <Link>IteratorAsyncResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\PartialTrustHelpers.cs">
+      <Link>PartialTrustHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\PlatformSupport.cs">
+      <Link>PlatformSupport.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\SegmentBufferPool.cs">
+      <Link>SegmentBufferPool.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\Singleton.cs">
+      <Link>Singleton.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\SynchronizedPool.cs">
+      <Link>SynchronizedPool.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\TaskHelpers.cs">
+      <Link>TaskHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\Ticks.cs">
+      <Link>Ticks.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\TimeoutHelper.cs">
+      <Link>TimeoutHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\Timestamp.cs">
+      <Link>Timestamp.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\TraceOperation.cs">
+      <Link>TraceOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.Azure.Amqp\Util\WaitCallbackActionItem.cs">
+      <Link>WaitCallbackActionItem.cs</Link>
+    </Compile>
     <None Include="..\Microsoft.Azure.Amqp\Nuget\make_nuget_package.ps1" />
     <None Include="..\Microsoft.Azure.Amqp\Nuget\Microsoft.Azure.Amqp.nuspec" />
   </ItemGroup>

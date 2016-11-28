@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+namespace Microsoft.Azure.Amqp.Util
 {
     using System;
-    
-    sealed class SegmentBufferPool
+
+    public sealed class SegmentBufferPool
     {
         readonly int segmentSize;
         readonly byte[] heap;

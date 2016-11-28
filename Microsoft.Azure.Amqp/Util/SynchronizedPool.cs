@@ -1,14 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+namespace Microsoft.Azure.Amqp.Util
 {
     using System;
     using System.Collections.Generic;
 #if !NETSTANDARD
     using System.Security.Permissions;
 #endif
-    using System.Threading;
 
     // A simple synchronized pool would simply lock a stack and push/pop on return/take.
     //

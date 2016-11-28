@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Amqp.Transport
 {
     using System;
     using System.Net;
+    using Util;
 
     sealed class TcpTransportInitiator : TransportInitiator
     {

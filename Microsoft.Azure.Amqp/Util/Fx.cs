@@ -1,30 +1,31 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Threading;
+
+namespace Microsoft.Azure.Amqp.Util
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
-    using System.Runtime.CompilerServices;
 #if !NETSTANDARD
     using System.Runtime.ConstrainedExecution;
-#endif
-    using System.Runtime.InteropServices;
     using System.Security;
-    using System.Threading;
-    using Microsoft.Win32;
+    using Win32;
+#endif
 
-    static class Fx
+    public static class Fx
     {
         // This is only used for EventLog Source therefore matching EventLog source rather than ETL source
-        const string DefaultEventSource = "Microsoft.DeviceHub";
+        const string DefaultEventSource = "Microsoft.Azure.Amqp";
 
 #if DEBUG
-        const string SBRegistryKey = @"SOFTWARE\Microsoft\DeviceHub\v2.0";
+        const string SBRegistryKey = @"SOFTWARE\Microsoft\AzureAmqp\v2.0";
         const string AssertsFailFastName = "AssertsFailFast";
         const string BreakOnExceptionTypesName = "BreakOnExceptionTypes";
         const string FastDebugName = "FastDebug";

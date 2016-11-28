@@ -1,9 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+namespace Microsoft.Azure.Amqp.Util
 {
-    class AmqpTrace
+    /// <summary>
+    /// 
+    /// </summary>
+    public class AmqpTrace
     {
         // Replace this with your own implementation to enable tracing.
         public static AmqpTrace Provider = new AmqpTrace();

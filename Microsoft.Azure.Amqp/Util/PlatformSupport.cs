@@ -26,6 +26,7 @@ namespace System.Collections.Generic
 {
     using System.Collections.ObjectModel;
     using Microsoft.Azure.Amqp;
+    using Microsoft.Azure.Amqp.Util;
 
     /// <summary>Provides a collection whose items are types that serve as keys.</summary>
     /// <typeparam name="TItem">The item types contained in the collection that also serve as the keys for the collection.</typeparam>

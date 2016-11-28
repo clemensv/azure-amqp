@@ -1,7 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+
+namespace Microsoft.Azure.Amqp.Util
 {
     using System;
     using System.Diagnostics;
@@ -12,12 +13,12 @@ namespace Microsoft.Azure.Amqp
     // This class is immune to clock jump with the following two exceptions:
     //  - When multi-processor machine has a bug in BIOS/HAL that returns inconsistent clock tick for different processor.
     //  - When the machine does not support high frequency CPU tick.
-    struct Timestamp : IComparable<Timestamp>, IEquatable<Timestamp>
+    public struct Timestamp : IComparable<Timestamp>, IEquatable<Timestamp>
     {
-        static readonly double TickFrequency = 10000000.0 / Stopwatch.Frequency;
-        readonly long timestamp;
+        private static readonly double TickFrequency = 10000000.0/Stopwatch.Frequency;
+        private readonly long timestamp;
 
-        Timestamp(long timestamp)
+        private Timestamp(long timestamp)
         {
             this.timestamp = timestamp;
         }
@@ -34,29 +35,26 @@ namespace Microsoft.Azure.Amqp
 
         public long ElapsedTicks
         {
-            get
-            {
-                return this.GetElapsedDateTimeTicks();
-            }
+            get { return this.GetElapsedDateTimeTicks(); }
         }
 
-        static long ConvertRawTicksToTicks(long rawTicks)
+        private static long ConvertRawTicksToTicks(long rawTicks)
         {
             if (Stopwatch.IsHighResolution)
             {
-                double elapsedTicks = rawTicks * TickFrequency;
-                return (long)elapsedTicks;
+                double elapsedTicks = rawTicks*TickFrequency;
+                return (long) elapsedTicks;
             }
 
             return rawTicks;
         }
 
-        long GetRawElapsedTicks()
+        private long GetRawElapsedTicks()
         {
             return Stopwatch.GetTimestamp() - this.timestamp;
         }
 
-        long GetElapsedDateTimeTicks()
+        private long GetElapsedDateTimeTicks()
         {
             long rawElapsedTicks = this.GetRawElapsedTicks();
             return ConvertRawTicksToTicks(rawElapsedTicks);
@@ -81,7 +79,7 @@ namespace Microsoft.Azure.Amqp
         {
             if (obj is Timestamp)
             {
-                return this.Equals((Timestamp)obj);
+                return this.Equals((Timestamp) obj);
             }
 
             return false;
@@ -119,13 +117,13 @@ namespace Microsoft.Azure.Amqp
 
         public static Timestamp operator +(Timestamp t, TimeSpan duration)
         {
-            long timestamp = (long)(t.timestamp + duration.Ticks / TickFrequency);
+            long timestamp = (long) (t.timestamp + duration.Ticks/TickFrequency);
             return new Timestamp(timestamp);
         }
 
         public static Timestamp operator -(Timestamp t, TimeSpan duration)
         {
-            long timestamp = (long)(t.timestamp - duration.Ticks / TickFrequency);
+            long timestamp = (long) (t.timestamp - duration.Ticks/TickFrequency);
             return new Timestamp(timestamp);
         }
 

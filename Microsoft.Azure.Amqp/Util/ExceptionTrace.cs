@@ -1,23 +1,23 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Amqp
+using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Tracing;
+using System.Globalization;
+using System.Runtime.CompilerServices;
+using System.Text;
+using Microsoft.Azure.Amqp.Tracing;
+
+namespace Microsoft.Azure.Amqp.Util
 {
-    using System;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Diagnostics.Tracing;
-    using System.Globalization;
-    using System.Runtime.CompilerServices;
-    using System.Runtime.Versioning;
-    using System.Text;
-    using System.Threading;
 #if !NETSTANDARD
     using Microsoft.Azure.Amqp.Interop;
+    using System.Runtime.Versioning;
 #endif
-    using Microsoft.Azure.Amqp.Tracing;
 
-    class ExceptionTrace
+    public class ExceptionTrace
     {
         const ushort FailFastEventLogCategory = 6;
         readonly string eventSourceName;
