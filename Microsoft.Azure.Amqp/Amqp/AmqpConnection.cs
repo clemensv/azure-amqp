@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Amqp
                 return LazyInitializer.EnsureInitialized(ref this.extensions);
             }
         }
-
+        
         public bool IsInitiator
         {
             get { return this.isInitiator; }
@@ -374,7 +374,19 @@ namespace Microsoft.Azure.Amqp
             {
                 this.SendOpen();
             }
-            
+
+            if ( open.Properties != null )
+            {
+                if (this.Settings.Properties == null)
+                {
+                    this.Settings.Properties = open.Properties;
+                }
+                else
+                {
+                    this.Settings.Properties.Merge(open.Properties);
+                }
+            }
+
             if(this.isInitiator)
             {
                 // check if open returned an error right away
